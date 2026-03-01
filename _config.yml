@@ -1,0 +1,31 @@
+title: Mykyta Chursin | Portfolio
+description: "Portfolio of Mykyta Chursin, Software Developer, Security Engineer, and AI Enthusiast."
+url: ""
+baseurl: ""
+
+# Typography & Colors settings (we'll implement this via CSS, just for reference if needed)
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - vanilla-backup/
+  - script.js
+
+future: true
+
+author:
+  name: "Mykyta Chursin"
+  email: "hello@example.com"
+  github: "https://github.com/takymy"
+  hackthebox: "https://app.hackthebox.com/users/YOUR_ID_HERE"
+  linkedin: "https://linkedin.com/in/mykytachursin"
+  role: "CS Student & Security Specialist"
+  focus: "Networking, Red Teaming"
+  os: "WebOS 1.0"
+  prompt_user: "user"
+  prompt_hostname: "portfolio"

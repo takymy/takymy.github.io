@@ -1,0 +1,23 @@
+# Build directories and caches
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Ruby/Bundler
+.bundle/
+# Gemfile.lock is often committed for GitHub pages, but you can ignore it if you prefer
+# Gemfile.lock
+
+# Node modules (if you ever use NPM)
+node_modules/
+package-lock.json

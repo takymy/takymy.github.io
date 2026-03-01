@@ -1,0 +1,24 @@
+- company: SotonLM
+  role: Data Engineering Lead
+  date: 2025 - present
+  description:
+    - Co-led the Data Engineering department, setting final deliverables like the dataset and documentation.
+    - Performed hands-on data gathering using python pipelines.
+    - Executed data cleaning tasks, including HTML filtering, deduplication, and PII scrubbing.
+    - Handled data preparation, involving parsing files (PDFs, CSVs).
+
+- company: UoS Formula Student Team
+  role: Software Team Member
+  date: Part Time
+  description:
+    - Developed and refined a Telemetry GUI using Python and Kivy library.
+    - Gained teamwork and Agile methodology experience.
+    - Developed strong planning, task coordination and proble solving skills.
+
+- company: Auto BI
+  role: Front-End Developer
+  date: Part Time
+  description:
+    - Shadowed a full-stack web developer to gain practical exposure to Agile methodologies and project coordination.
+    - Assisted in task planning, workload management, and coollaborative problem-solving in a high paced work environment.
+    - Used React Native components and its stylesheet system to build interactive blocks in the mobile app.
