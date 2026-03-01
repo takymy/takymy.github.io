@@ -236,9 +236,6 @@ h1, h2, h3, h4 {
     padding: 0;
 }
 
-.hero-terminal {
-    background-color: var(--bg-dark); /* Solid terminal background for the root frame */
-}
 
 .framed-header {
     position: absolute;
@@ -318,184 +315,6 @@ h1, h2, h3, h4 {
 
 .mobile-only {
     display: none;
-}
-
-/* =========================================
-   INLINE TERMINAL (HERO)
-   ========================================= */
-.terminal-window {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.terminal-header {
-    display: none; /* Handled by framed-header now */
-}
-
-
-/* Floating Terminal Menu */
-.floating-terminal {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-left: none; /* Stick to edge */
-    padding: 1rem 0.75rem;
-    cursor: pointer;
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    box-shadow: 2px 2px 0 var(--border-color);
-}
-
-.floating-terminal .term-icon {
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-}
-
-.floating-terminal .hover-text {
-    font-family: var(--font-mono);
-    color: var(--accent-primary);
-    font-weight: bold;
-    font-size: 1.1rem;
-    display: none;
-}
-
-.floating-terminal:hover {
-    padding: 1rem 1rem;
-    background-color: var(--bg-surface-hover);
-    border-color: var(--accent-primary);
-    box-shadow: 2px 2px 0 var(--accent-primary);
-}
-
-.floating-terminal:hover .term-icon {
-    display: none;
-}
-
-.floating-terminal:hover .hover-text {
-    display: inline-block;
-}
-
-.terminal-body {
-    background-color: var(--bg-dark);
-    padding: 1.5rem;
-    font-family: var(--font-mono);
-    height: 350px;
-    max-height: 60vh; /* Better mobile scaling */
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    position: relative;
-}
-
-/* Custom terminal scrollbar */
-.terminal-body::-webkit-scrollbar {
-    width: 8px;
-}
-
-.terminal-body::-webkit-scrollbar-track {
-    background: var(--bg-dark);
-    border-left: 1px solid var(--border-color);
-}
-
-.terminal-body::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: var(--radius-zero);
-}
-
-.terminal-body::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-primary);
-}
-
-.terminal-line {
-    color: var(--text-secondary);
-    word-break: break-all;
-}
-
-.terminal-input-line {
-    display: flex;
-    align-items: center;
-    margin-top: 0.5rem;
-}
-
-.prompt {
-    margin-right: 0.5rem;
-    white-space: nowrap;
-}
-
-#terminal-input {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary); /* Match standard output */
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    flex-grow: 1;
-    outline: none;
-}
-
-/* =========================================
-   HERO TEXT & CURSOR BLINK ANIMATION
-   ========================================= */
-.glow-text {
-    color: #ffffff;
-}
-
-/* =========================================
-   HERO SECTION (FETCH STYLE)
-   ========================================= */
-.fetch-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    padding: 1rem;
-}
-
-.fetch-logo pre {
-    font-size: 1.2rem;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-    margin: 0;
-}
-
-.fetch-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-size: 0.95rem;
-}
-
-.fetch-title {
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.fetch-line {
-    color: var(--text-muted);
-}
-
-.fetch-stat {
-    color: var(--text-primary);
-}
-
-.fetch-stat span.accent-yellow {
-    font-weight: bold;
-    display: inline-block;
-    white-space: pre;
-}
-
-.fetch-colors {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
 }
 
 .color-block {
@@ -795,23 +614,6 @@ h1, h2, h3, h4 {
         font-size: 1.2rem;
     }
 
-    /* Force the fetch screen text to wrap cleanly */
-    .fetch-container {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 0;
-        align-items: flex-start;
-        width: 100%;
-        overflow: hidden;
-    }
-    
-    .fetch-logo pre {
-        font-size: 0.7rem; /* Make ASCII art fit on mobile */
-    }
-
-    .fetch-info {
-        font-size: 0.8rem; /* Make stats fit cleanly */
-    }
     
     .timeline-meta {
         flex-direction: column;
@@ -931,13 +733,6 @@ h1, h2, h3, h4 {
         font-size: 1rem;
     }
     
-    .fetch-logo pre {
-        font-size: 0.55rem;
-    }
-    
-    .terminal-body {
-        padding: 1rem;
-    }
     
     .post-item h3 {
         font-size: 1.3rem !important; /* Force resize of long titles */
@@ -948,9 +743,4 @@ h1, h2, h3, h4 {
         font-size: 0.85rem;
     }
     
-    .floating-terminal {
-        bottom: 1.2rem;
-        right: 1.2rem;
-        padding: 0.8rem;
-    }
 }
