@@ -272,6 +272,10 @@ h1, h2, h3, h4 {
     padding: 3rem 2rem; /* The padding applied inside the outline frame */
 }
 
+#about .framed-content {
+    padding: 1.5rem 2rem;
+}
+
 /* =========================================
    NAVIGATION (TERMINAL & MOBILE)
    ========================================= */
