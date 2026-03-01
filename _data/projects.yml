@@ -12,3 +12,8 @@
   description: Developed an app as a part of my second year coursework for Software Design and Development module. The app is designed to provide users with information about sexual health and STIs. It also includes a feature to book appointments and see test results.
   tags: [Java, Coursework, OOP]
   link: "#"
+
+- title: This Portfolio Website
+  description: I built this portfolio using Jekyll (an ultra-minimal static site generator). No heavy Javascript frameworks, just raw HTML/CSS wrapped in YAML data objects.
+  tags: [CSS, HTML, WebDev]
+  link: "#"
