@@ -40,6 +40,10 @@
     border-radius: var(--radius-zero); /* Enforce globally */
 }
 
+html, body {
+    height: 100%;
+}
+
 html {
     scroll-behavior: smooth;
 }
