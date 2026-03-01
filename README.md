@@ -1,13 +1,13 @@
 # Mykyta Chursin | Portfolio
 
-This portfolio is built linearly using **Jekyll** an ultra-minimal static site generator. No heavy Javascript frameworks, just raw HTML/CSS wrapped in YAML data objects.
+I built this portfolio using **Jekyll** (an ultra-minimal static site generator). No heavy Javascript frameworks, just raw HTML/CSS wrapped in YAML data objects.
 
 ## Folder Structure
 
-- `_data/`: Contains all of your text configuration in YAML lists. If you want to add/edit your skills, experience, projects, or achievements, edit the respective files in here. The website will automatically update.
-- `_writeups/`: This is where your blog posts go.
+- `_data/`: Contains all of my text configuration in YAML lists. If I want to add/edit my skills, experience, projects, or achievements. The website will automatically update.
+- `_posts/`: All my blog posts in markdown format.
 - `_includes/` & `_layouts/`: The modular HTML structure of the website.
-- `assets/css/main.css`: The central CSS stylesheet dictating the brutalist 0px border-radius styling.
+- `assets/css/main.css`: The central CSS stylesheet dictating the brutalist NO ROUNDER CORNERS STYLING.
 
 ## Managing Blog Posts
 
@@ -15,15 +15,13 @@ I have completely bypassed Jekyll's default, strict `_posts` requirement. You no
 
 To create a new blog post:
 
-1. Simply create a new markdown file (e.g. `My Cool Analysis.md`) and drop it into the `_writeups/` folder.
-2. Add the following YAML block to the very top of your file:
+1. I Simply need to create a new markdown file (e.g. `Essay on how I love functional programming.md`) and drop it into the `_posts/` folder.
+2. And also add the following YAML block to the very top of your file:
 
 ```yaml
 ---
 layout: post
-title: "My Cool Analysis"
+title: "Essay on how I love functional programming"
 date: 2026-03-01
 ---
 ```
-
-3. Start typing your blog below the dashes! It will automatically appear on the `/blog` page.
