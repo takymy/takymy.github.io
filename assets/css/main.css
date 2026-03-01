@@ -273,7 +273,7 @@ h1, h2, h3, h4 {
 }
 
 #about .framed-content {
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
 }
 
 /* =========================================
@@ -370,7 +370,7 @@ h1, h2, h3, h4 {
 }
 
 .about-text {
-    padding: 2rem; /* Reverting to consistent card padding since container governs total width now */
+    padding: 0; 
 }
 
 .about-text p {
@@ -739,6 +739,10 @@ h1, h2, h3, h4 {
 @media (max-width: 400px) {
     .nav-container {
         padding: 1rem;
+    }
+    
+    #about .framed-content {
+        padding: 0.5rem 1rem;
     }
     
     .hero-title {
