@@ -1,0 +1,225 @@
+/* =========================================
+   Y2K APPLE AESTHETIC - LUCIDA STACK
+   ========================================= */
+
+:root {
+    --bg-main: #ffffff;
+    --text-main: #000000;
+    --text-muted: #333333;
+    --link-color: #0000EE; /* Classic pure unvisited link blue */
+    --border-color: #cccccc;
+    
+    /* Strict Primitive 2000s Typography */
+    --font-stack: "Times New Roman", Times, serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    line-height: 1.5;
+    font-size: 14px; /* Classic smaller default font */
+    -webkit-font-smoothing: antialiased; /* Crisp text */
+}
+
+/* Container limits width to maintain readability, similar to old layouts */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: none;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+.site-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 40px;
+    background-color: #f8f8f8; /* Very subtle grey header native to OS X */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -0.5px; /* Tighter tracking commonly used on Lucida Grande */
+}
+.site-title:hover {
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    gap: 20px;
+}
+.site-nav a {
+    color: var(--text-muted);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.site-nav a:hover {
+    color: var(--text-main);
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    letter-spacing: -0.5px;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+h3 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background-color: #f8f8f8;
+}
+
+.footer-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.footer-links a:hover {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+/* =========================================
+   PAGE STRUCTURE & LIST STYLING (Y2K / RAW)
+   ========================================= */
+.hero-section {
+    padding: 60px 0 40px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.bio p {
+    font-size: 1rem;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+/* Skills Layout */
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.list-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    margin-top: 0;
+    border-bottom: 1px dotted var(--border-color);
+    padding-bottom: 5px;
+}
+.list-group ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+.list-group li {
+    margin-bottom: 5px;
+    color: var(--text-muted);
+}
+
+/* Lists and Entries */
+.job-entry, .project-entry {
+    margin-bottom: 30px;
+}
+.job-entry h3, .project-entry h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.job-entry ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.job-entry li {
+    margin-bottom: 8px;
+}
+
+.tech-tags {
+    font-style: italic;
+    color: #888;
+}
+
+.achievements-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+.achievements-list li {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #ddd;
+}

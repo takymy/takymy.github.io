@@ -1,0 +1,74 @@
+---
+layout: default
+title: Mykyta Chursin | Portfolio
+---
+
+<div class="hero-section">
+    <h1>{{ site.author.name }}</h1>
+    <p class="lead">Software Developer. Aspiring Security Engineer. AI Enthusiast.</p>
+    
+    <div class="bio">
+        <p>I’m currently studying Computer Science with Cybersecurity at the University of Southampton, working towards an MEng.</p>
+        <p>I have a strong interest in building secure and scalable systems, tackling complex technical challenges, mastering new technologies, and writing clean, efficient code.</p>
+        <p>Outside of my studies, I actively participate in hackathons (like my recent 2nd place at Soton Hack 2025) and continuously explore modern development frameworks to expand my skill set.</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Skills</h2>
+    <div class="item-list">
+        {% for category in site.data.skills %}
+        <div class="list-group">
+            <h3>{{ category.category }}</h3>
+            <ul>
+                {% for item in category.items %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section">
+    <h2>Experience</h2>
+    <div class="experience-list">
+        {% for job in site.data.experience %}
+        <div class="job-entry">
+            <h3>{{ job.role }}</h3>
+            <p class="meta"><strong>{{ job.company }}</strong> &bull; {{ job.duration }}</p>
+            <ul>
+                {% for resp in job.responsibilities %}
+                <li>{{ resp }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section">
+    <h2>Projects</h2>
+    <div class="projects-list">
+        {% for project in site.data.projects %}
+        <div class="project-entry">
+            <h3>
+                <a href="{{ project.link }}">{{ project.title }}</a>
+            </h3>
+            <p>{{ project.description }}</p>
+            <p class="meta tech-tags">Built with: {{ project.technologies | join: ", " }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section">
+    <h2>Achievements</h2>
+    <ul class="achievements-list">
+        {% for item in site.data.achievements %}
+        <li>
+            <strong>{{ item.title }}</strong>: {{ item.description }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
