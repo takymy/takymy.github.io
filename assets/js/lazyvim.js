@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tabEl.onclick = () => { if (!isActive) navigateTo(tab.url, false); };
                 
                 tabEl.innerHTML = `
-                    <span class="tab-icon"><i class="${tab.iconClass}"></i></span>
+                    <span class="tab-icon"><i class="fa-brands fa-markdown fg-blue"></i></span>
                     <span>${tab.title}</span>
                     <span class="tab-close"><i class="fa-solid fa-xmark"></i></span>
                 `;
@@ -230,16 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const activeSidebarLink = document.querySelector('.tree-node.active');
             let docTitle = "buffer.md";
-            let iconClass = "fa-brands fa-markdown fg-blue";
             
             if (activeSidebarLink) {
                 docTitle = activeSidebarLink.textContent.trim();
-                const iconEl = activeSidebarLink.querySelector('i');
-                if (iconEl) iconClass = iconEl.className;
             }
             
             if (!tabs.find(t => t.url === currentUrl)) {
-                tabs.push({ url: currentUrl, title: docTitle, iconClass: iconClass });
+                tabs.push({ url: currentUrl, title: docTitle });
                 saveTabs(tabs);
             }
             
@@ -277,12 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigateTo = async (url, pushState = true) => {
             const sidebarLink = navItems.find(l => l.getAttribute('href') === url);
             let docTitle = "buffer.md";
-            let iconClass = "fa-brands fa-markdown fg-blue";
             
             if (sidebarLink) {
                 docTitle = sidebarLink.textContent.trim();
-                const iconEl = sidebarLink.querySelector('i');
-                if (iconEl) iconClass = iconEl.className;
             }
 
             navItems.forEach(l => l.classList.remove('active'));
@@ -301,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 let tabs = getTabs();
                 if (!tabs.find(t => t.url === url)) {
-                    tabs.push({ url: url, title: docTitle, iconClass: iconClass });
+                    tabs.push({ url: url, title: docTitle });
                     saveTabs(tabs);
                 }
                 

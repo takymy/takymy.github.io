@@ -202,12 +202,13 @@ a {
 }
 
 .buffer-tab {
-  padding: 6px 15px;
-  background-color: #3c3836; /* inactive tab background */
-  color: #a89984; /* inactive tab fg */
+  height: 38px;
+  padding: 0 15px;
+  background-color: #282828; 
+  color: #665c54; 
   border-radius: 4px 4px 0 0;
-  border: 1px solid #504945;
-  border-bottom: none;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #504945;
   font-size: 0.9em;
   display: flex;
   align-items: center;
@@ -215,15 +216,20 @@ a {
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .buffer-tab:hover {
-  background-color: #504945;
+  background-color: #3c3836;
+  color: #a89984;
 }
 
 .buffer-tab.active {
-  background-color: var(--bg-main); /* Match editor pane */
+  background-color: var(--bg-main);
   color: var(--fg-main);
+  border: 1px solid #504945;
+  border-bottom: 1px solid var(--bg-main);
+  margin-bottom: -1px;
 }
 
 .buffer-tab .tab-close {
