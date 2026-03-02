@@ -1,155 +1,26 @@
----
-layout: default
----
-<!-- MAIN HERO SECTION -->
-<section id="main-hero" class="section hero-section" style="display: flex; margin-top: 6rem; flex-direction: column; align-items: flex-start;">
-    <h1 class="hero-title" style="margin-bottom: 0.5rem; font-weight: 700;">
-        <span class="glow-text">{{ site.data.about.headline }}</span>
-    </h1>
-    <h2 class="hero-subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400; font-family: var(--font-mono);">
-        {{ site.data.about.subheadline }}
-    </h2>
-    <div style="display: flex; gap: 1rem;">
-        <a href="{{ '/#contact' | relative_url }}" class="btn btn-primary">Contact</a>
-        <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">Blog</a>
-    </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section id="about" class="section framed-section">
-    <div class="framed-header">
-        <span class="framed-title">About Me</span>
-    </div>
-    <div class="framed-content">
-        <div class="about-grid">
-            <div class="about-text">
-                {% for p in site.data.about.bio %}
-                    <p>{{ p }}</p>
-                {% endfor %}
-                <div class="tech-stack">
-                    {% for skill in site.data.about.skills %}
-                        <span class="tech-tag">{{ skill }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- EXPERIENCE SECTION -->
-<section id="experience" class="section framed-section">
-    <div class="framed-header">
-        <span class="framed-title">Experience</span>
-    </div>
-    <div class="framed-content">
-        <div class="timeline">
-            {% for exp in site.data.experience %}
-            <div class="timeline-item block-card small-block">
-                <div class="timeline-meta">
-                    <span class="timeline-date mono">{{ exp.date }}</span>
-                    <span class="timeline-role accent-dangerprimary">{{ exp.role }}</span>
-                </div>
-                <h3 class="timeline-org">{{ exp.company }}</h3>
-                <ul class="timeline-desc">
-                    {% for desc in exp.description %}
-                    <li>{{ desc }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- PROJECTS SECTION -->
-<section id="projects" class="section framed-section">
-    <div class="framed-header">
-        <span class="framed-title">Projects</span>
-    </div>
-    <div class="framed-content">
-        <div class="projects-grid">
-            {% for project in site.data.projects %}
-            <div class="project-card block-card small-block">
-                <div class="project-header">
-                    <div class="folder-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
-                    <div class="project-links">
-                        <a href="{{ project.link }}" class="github-link" title="Source">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-                <h3 class="project-title"><a href="{{ project.link }}">{{ project.title }}</a></h3>
-                <p class="project-desc">{{ project.description }}</p>
-                <div class="project-tech">
-                    {% for tag in project.tags %}
-                    <span>{{ tag }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- ACHIEVEMENTS SECTION -->
-<section id="achievements" class="section framed-section">
-    <div class="framed-header">
-        <span class="framed-title">Achievements</span>
-    </div>
-    <div class="framed-content">
-        <div class="achievements-list">
-            {% for item in site.data.achievements %}
-            <div class="achievement-item block-card large-block">
-                <div class="achievement-icon">
-                    {% if item.icon == 'shield' %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    {% elsif item.icon == 'medal' %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-                    {% else %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    {% endif %}
-                </div>
-                <div class="achievement-content">
-                    <h3 class="achievement-title">{{ item.title }}</h3>
-                    <p class="achievement-desc">{{ item.description }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="section framed-section">
-    <div class="framed-header">
-        <span class="framed-title">Contact</span>
-    </div>
-    <div class="framed-content">
-        <div class="contact-content">
-            <h2 class="contact-heading">Contact Me</h2>
-            <p class="contact-text">I am currently looking for internships and opportunities to apply my passion for networking and cybersecurity. Whether you want to discuss protocols, algorithms, or potential roles, my inbox is open.</p>
-            <div class="contact-actions" style="display: flex; gap: 1.5rem; justify-content: flex-start; flex-wrap: wrap;">
-                <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-large btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Email
-                </a>
-                <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
-                </a>
-                <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
-                </a>
-                <!--
-                <a href="{{ site.author.hackthebox }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large btn-icon btn-htb">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    HackTheBox
-                </a>
-                -->
-            </div>
-        </div>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: monospace;
+            font-size: 2rem;
+            letter-spacing: 0.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div>Coming Soon</div>
+</body>
+</html>
