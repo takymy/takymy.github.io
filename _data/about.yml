@@ -1,17 +1,20 @@
 headline: Mykyta Chursin
 subheadline: Software Developer - Aspiring Security Engineer - AI Enthusiast
 bio:
-  - "Hi, I’m Mykyta Chursin. I’m currently studying Computer Science with Cybersecurity at the University of Southampton, working towards an MEng."
-  - "I'm a software developer with a strong interest in building secure and scalable systems. I enjoy tackling complex technical challenges, mastering new technologies, and writing clean, efficient code."
-  - "Outside of my studies and hobbies, I actively participate in hackathons (like my recent 2nd place at Soton Hack 2025) and continuously explore modern development frameworks to expand my skill set."
-  - "Currently, I'm aiming for a career in Cyber Security, and I'm actively learning and developing my skills in this area. I'm particularly interested in penetration testing and vulnerability research."
-  - "I’m always open to new opportunities and conversations, so feel free to reach out."
+  - "Hi, I’m Mykyta Chursin, a Computer Science with Cybersecurity student at University of Southampton."
+  - "I’m a software developer with experience in web application development, from simple landing pages to complex e-commerce platforms built with React, TypeScript, and Node.js. I also work with Python, Java, and C, and I continuously expand my technical skill set."
+  - "My long-term goal is to become a security engineer. I’m focused on understanding how data flows through systems, how protocols enable communication, and where weaknesses appear."
+  - "I’m currently pursuing the HTB CJCA certification, strengthening my knowledge in penetration testing methodologies, reconnaissance, exploitation, privilege escalation, network traffic analysis, and SIEM-based log analysis."
+
 skills:
-  - Networking
-  - C
-  - Python
-  - Java Script
-  - Linux
-  - Bash
-  - Web Dev (Front-End)
-  - Neovim
+  - Web application development (React, TypeScript, Node.js)
+  - Backend development fundamentals
+  - Python, Java, C
+  - Networking fundamentals & protocol understanding
+  - Penetration testing methodologies
+  - Reconnaissance & information gathering
+  - Manual & automated exploitation
+  - Windows & Linux privilege escalation
+  - Network traffic analysis
+  - Security monitoring & log analysis
+  - SIEM-assisted analysis (Elastic)
