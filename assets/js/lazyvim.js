@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isActive = tab.url === currentUrl;
                 const tabEl = document.createElement('div');
                 tabEl.className = `buffer-tab ${isActive ? 'active' : ''}`;
-                tabEl.onclick = () => { if (!isActive) navigateTo(tab.url, false); };
+                tabEl.onclick = () => { if (!isActive) navigateTo(tab.url, true); };
                 
                 tabEl.innerHTML = `
                     <span class="tab-icon"><i class="fa-brands fa-markdown fg-blue"></i></span>
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isActive) {
                         // If we closed the active tab, go to the last available tab, or dashboard
                         if (remaining.length > 0) {
-                            navigateTo(remaining[remaining.length - 1].url, false);
+                            navigateTo(remaining[remaining.length - 1].url, true);
                         } else {
                             window.location.href = dashboardLink;
                         }

@@ -186,29 +186,30 @@ a {
   background-color: var(--bg-main);
 }
 
-.buffer-tabs {
+.buffer-tabs {   
   display: flex;
+  flex-shrink: 0;
   background-color: #1d2021;
   border-bottom: 1px solid #504945;
-  padding-top: 8px;
+  padding-top: 8px; /* 8px padding above tabs */
   padding-left: 10px;
-  overflow-x: auto; /* Allow scrolling if many tabs */
+  overflow-x: auto;
   gap: 2px;
-  /* Hide scrollbar for a cleaner look but keep functionality */
   scrollbar-width: none; 
+  align-items: flex-end; /* This forces tabs to align to the bottom container border */
 }
 .buffer-tabs::-webkit-scrollbar {
   display: none;
 }
 
 .buffer-tab {
-  height: 38px;
+  height: 36px;
   padding: 0 15px;
-  background-color: #282828; 
-  color: #665c54; 
+  background-color: transparent; /* INACTIVE tab matches the #1d2021 tab bar */
+  color: #a89984; 
   border-radius: 4px 4px 0 0;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #504945;
+  border: 1px solid transparent; /* Invisible border prevents jumping */
+  border-bottom: none;
   font-size: 0.9em;
   display: flex;
   align-items: center;
@@ -221,15 +222,16 @@ a {
 
 .buffer-tab:hover {
   background-color: #3c3836;
-  color: #a89984;
+  color: var(--fg-main);
 }
 
 .buffer-tab.active {
-  background-color: var(--bg-main);
+  background-color: var(--bg-main); /* Active tab matches editor background */
   color: var(--fg-main);
   border: 1px solid #504945;
   border-bottom: 1px solid var(--bg-main);
-  margin-bottom: -1px;
+  margin-bottom: -1px; /* push down over the container's bottom border string */
+  z-index: 2; /* Ensure it covers the border */
 }
 
 .buffer-tab .tab-close {
