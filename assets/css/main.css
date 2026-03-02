@@ -1,225 +1,483 @@
-/* =========================================
-   Y2K APPLE AESTHETIC - LUCIDA STACK
-   ========================================= */
+/* ==========================================================================
+   LAZYVIM GRUVBOX AESTHETIC
+   ========================================================================== */
 
 :root {
-    --bg-main: #ffffff;
-    --text-main: #000000;
-    --text-muted: #333333;
-    --link-color: #0000EE; /* Classic pure unvisited link blue */
-    --border-color: #cccccc;
-    
-    /* Strict Primitive 2000s Typography */
-    --font-stack: "Times New Roman", Times, serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  /* Gruvbox Dark Palette */
+  --bg-main: #282828;
+  --fg-main: #ebdbb2;
+  
+  --blue: #83a598;
+  --green: #b8bb26;
+  --yellow: #fabd2f;
+  --orange: #fe8019;
+  --purple: #d3869b;
+  --red: #fb4934;
+  --cyan: #8ec07c;
+  
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: var(--font-stack);
-    line-height: 1.5;
-    font-size: 14px; /* Classic smaller default font */
-    -webkit-font-smoothing: antialiased; /* Crisp text */
-}
-
-/* Container limits width to maintain readability, similar to old layouts */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+  background-color: var(--bg-main);
+  color: var(--fg-main);
+  font-family: var(--font-mono);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: underline;
-}
-a:hover {
-    text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* =========================================
-   HEADER & NAVIGATION
-   ========================================= */
-.site-header {
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-    margin-bottom: 40px;
-    background-color: #f8f8f8; /* Very subtle grey header native to OS X */
+/* Base Colors */
+.fg-blue { color: var(--blue); }
+.fg-green { color: var(--green); }
+.fg-yellow { color: var(--yellow); }
+.fg-orange { color: var(--orange); }
+.fg-purple { color: var(--purple); }
+.fg-red { color: var(--red); }
+.fg-cyan { color: var(--cyan); }
+
+/* ==========================================================================
+   DASHBOARD LAYOUT (Home / LazyVim Splash)
+   ========================================================================== */
+.dashboard-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.header-inner {
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-ascii {
+  color: var(--blue);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+.dashboard-ascii pre {
+  font-family: var(--font-mono);
+  margin: 0;
+}
+
+.dashboard-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 350px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--fg-main);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* very subtle highlight */
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.menu-icon {
+  width: 20px;
+  text-align: center;
+}
+.menu-text {
+  color: var(--cyan);
+}
+.menu-key {
+  color: var(--orange);
+}
+
+.dashboard-stats {
+  margin-top: 3rem;
+  color: var(--blue);
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* ==========================================================================
+   NEO-TREE EXPLORER LAYOUT 
+   ========================================================================== */
+.neotree-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar Tree */
+.neotree-sidebar {
+  width: 300px;
+  min-width: 300px;
+  background-color: #1d2021; /* slightly darker for sidebar */
+  border-right: 1px solid #504945;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  overflow-y: auto;
+}
+
+.neotree-header {
+  padding: 5px 15px;
+  color: var(--yellow);
+  font-weight: 700;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.tree-node {
+  padding: 4px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--fg-main);
+  transition: background-color 0.1s;
+  text-decoration: none;
+}
+.tree-node:hover, .tree-node.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.tree-node.active {
+  color: var(--green);
+}
+.tree-indent {
+  padding-left: 35px;
+}
+.tree-indent-2 {
+  padding-left: 55px;
+}
+.tree-icon {
+  width: 16px;
+  text-align: center;
+}
+
+/* Right Pane Buffer */
+.neotree-buffer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+}
+
+.buffer-tabs {
+  display: flex;
+  background-color: #1d2021;
+  border-bottom: 1px solid #504945;
+  padding-top: 8px;
+  padding-left: 10px;
+}
+
+.buffer-tab {
+  padding: 6px 15px;
+  background-color: var(--bg-main);
+  color: var(--fg-main);
+  border-radius: 4px 4px 0 0;
+  border: 1px solid #504945;
+  border-bottom: none;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.buffer-tab .tab-close {
+  color: var(--red);
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.buffer-content {
+  padding: 30px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.buffer-content h1 { color: var(--blue); margin-top: 0; }
+.buffer-content h2 { color: var(--green); border-bottom: 1px dashed #504945; padding-bottom: 5px;}
+.buffer-content h3 { color: var(--yellow); }
+.buffer-content a { color: var(--blue); text-decoration: underline; }
+.buffer-content p, .buffer-content ul { margin-bottom: 15px; }
+.buffer-content li { margin-bottom: 5px; }
+
+/* Refactored Layout Utilities */
+.content-block {
+  margin-bottom: 30px;
+}
+.project-block {
+  margin-bottom: 40px; 
+  border-bottom: 1px dashed #504945; 
+  padding-bottom: 20px;
+}
+.tags-container {
+  margin-top: 15px; 
+  display: flex; 
+  gap: 10px; 
+  flex-wrap: wrap;
+}
+.post-excerpt {
+  font-size: 0.9em; 
+  margin-top: 5px; 
+  color: #a89984;
+}
+.post-item {
+  margin-bottom: 15px;
+}
+.hint-text {
+  font-size: 0.8em; 
+  text-align: center;
+}
+.profile-pic {
+  display: block;
+  max-width: 200px;
+  border: 2px dashed var(--yellow);
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Statusline styling */
+.statusline {
+  background-color: #3c3836;
+  color: var(--fg-main);
+  padding: 2px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+}
+.status-left, .status-right {
+  display: flex;
+  gap: 15px;
+}
+.status-mode {
+  background-color: var(--green);
+  color: #282828;
+  padding: 0 10px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   VIM SELECTION HIGHLIGHT & HELP WIDGET
+   ========================================================================== */
+.vim-selected {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  outline: 1px solid var(--blue);
+}
+
+#lazyvim-help-widget {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #1d2021;
+  border: 1px solid #504945;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: max-content;
+  min-width: 200px;
+  max-width: 300px;
+  max-height: 42px; /* Collapsed state */
+  overflow: hidden;
+  transition: max-height 0.3s ease, border-color 0.3s;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+#lazyvim-help-widget:hover, #lazyvim-help-widget.expanded {
+  max-height: 300px;
+  border-color: var(--blue);
+}
+
+.help-header {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: var(--fg-main);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.help-content {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+#lazyvim-help-widget:hover .help-content, 
+#lazyvim-help-widget.expanded .help-content {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+
+.help-content p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: var(--fg-main);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (Simplified Neovim Look)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Scale dashboard ascii to fit mobile */
+  .dashboard-ascii pre {
+    font-size: 5px;
+  }
+
+  /* Hide typical desktop neo-tree UI on mobile */
+  .neotree-sidebar,
+  .buffer-tabs,
+  .statusline {
+    display: none !important;
+  }
+
+  /* Reset layout structure so content fills viewport */
+  .neotree-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .neotree-buffer {
+    height: auto;
+    flex-grow: 1;
+  }
+
+  /* Mobile Header */
+  .mobile-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-}
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1d2021;
+    border-bottom: 1px solid #504945;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-.site-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-main);
-    text-decoration: none;
-    letter-spacing: -0.5px; /* Tighter tracking commonly used on Lucida Grande */
-}
-.site-title:hover {
-    text-decoration: none;
-}
+  .mobile-ascii {
+    color: var(--blue);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    font-family: var(--font-mono);
+    font-size: 4px; /* Scale using native font-size instead of transform */
+    white-space: pre;
+    overflow: hidden;
+  }
+  
+  .mobile-ascii pre {
+      margin: 0;
+  }
 
-.site-nav {
+  /* Hollow Burger Menu */
+  .burger-btn {
     display: flex;
-    gap: 20px;
-}
-.site-nav a {
-    color: var(--text-muted);
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-.site-nav a:hover {
-    color: var(--text-main);
-}
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+    position: relative;
+  }
 
-/* =========================================
-   TYPOGRAPHY
-   ========================================= */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--text-main);
-    font-weight: bold;
-    margin-bottom: 15px;
-    margin-top: 30px;
-    letter-spacing: -0.5px;
-}
+  .burger-line {
+    width: 100%;
+    height: 4px;
+    border: 1px solid var(--yellow); /* Hollow look */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
-h3 { font-size: 1.25rem; }
+  /* Animated Burger State */
+  .burger-btn.active .burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .burger-btn.active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .burger-btn.active .burger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
-p {
-    margin-bottom: 15px;
-}
+  /* Mobile Navigation Dropdown */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #1d2021;
+    border-bottom: 1px solid #504945;
+    padding: 10px 0;
+    position: absolute;
+    top: 51px; /* Height of mobile header approx */
+    left: 0;
+    width: 100%;
+    z-index: 99;
+  }
 
-/* =========================================
-   FOOTER
-   ========================================= */
-.site-footer {
-    border-top: 1px solid var(--border-color);
-    padding: 30px 0;
-    margin-top: 60px;
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    background-color: #f8f8f8;
-}
-
-.footer-links {
-    margin-top: 10px;
+  .mobile-nav.open {
     display: flex;
-    justify-content: center;
+  }
+
+  .mobile-nav-item {
+    padding: 12px 20px;
+    color: var(--fg-main);
+    display: flex;
+    align-items: center;
     gap: 15px;
+    border-bottom: 1px dashed #3c3836;
+  }
+
+  .mobile-nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--green);
+  }
 }
 
-.footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-}
-.footer-links a:hover {
-    color: var(--link-color);
-    text-decoration: underline;
+/* Hide mobile header on desktop by default */
+.mobile-header,
+.mobile-nav {
+  display: none;
 }
 
-/* =========================================
-   PAGE STRUCTURE & LIST STYLING (Y2K / RAW)
-   ========================================= */
-.hero-section {
-    padding: 60px 0 40px;
-    border-bottom: 2px solid #000;
-    margin-bottom: 40px;
-}
-
-.hero-section h1 {
-    font-size: 2.5rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
-}
-
-.lead {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    font-weight: bold;
-    margin-bottom: 25px;
-}
-
-.bio p {
-    font-size: 1rem;
-    max-width: 650px;
-    line-height: 1.6;
-}
-
-.section {
-    margin-bottom: 60px;
-}
-
-/* Skills Layout */
-.item-list {
+@media (max-width: 768px) {
+  .mobile-header {
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-.list-group h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: 0;
-    border-bottom: 1px dotted var(--border-color);
-    padding-bottom: 5px;
-}
-.list-group ul {
-    list-style-type: square;
-    padding-left: 20px;
-}
-.list-group li {
-    margin-bottom: 5px;
-    color: var(--text-muted);
-}
-
-/* Lists and Entries */
-.job-entry, .project-entry {
-    margin-bottom: 30px;
-}
-.job-entry h3, .project-entry h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-.meta {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-}
-
-.job-entry ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-.job-entry li {
-    margin-bottom: 8px;
-}
-
-.tech-tags {
-    font-style: italic;
-    color: #888;
-}
-
-.achievements-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-.achievements-list li {
-    margin-bottom: 15px;
-    padding-left: 15px;
-    border-left: 3px solid #ddd;
+  }
 }

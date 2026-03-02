@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title | default: "Portfolio Workspace" }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="neotree-layout">
+        <!-- Sidebar Tree -->
+        <aside class="neotree-sidebar">
+            <div class="neotree-header">Neo-tree</div>
+            
+            <a href="{{ '/' | relative_url }}" class="tree-node">
+                <span class="tree-icon fg-blue"><i class="fa-solid fa-house"></i></span>
+                Dashboard
+            </a>
+
+            <!-- Expandable Folders Structure -->
+            <div class="tree-node">
+                <span class="tree-icon fg-yellow"><i class="fa-solid fa-folder-open"></i></span>
+                Personal-website
+            </div>
+            
+            {% for item in site.data.nav %}
+            <a href="{{ item.url | relative_url }}" class="tree-node tree-indent {% assign is_post = false %}{% if page.layout == 'post' and item.url == '/blog.html' %}{% assign is_post = true %}{% endif %}{% if page.url == item.url or is_post %}active{% endif %}">
+                <span class="tree-icon fg-{{ item.color }}"><i class="fa-solid fa-{{ item.icon }}"></i></span>
+                {{ item.file }}
+            </a>
+            {% endfor %}
+            
+        </aside>
+
+        <!-- Mobile Header (Visible only on < 768px) -->
+        <header class="mobile-header">
+            <a href="{{ '/' | relative_url }}" class="mobile-ascii-link">
+                <div class="mobile-ascii">
+<pre>
+███╗   ███╗ ██████╗██╗  ██╗██╗   ██╗██████╗ ███████╗██╗███╗   ██╗
+████╗ ████║██╔════╝██║  ██║██║   ██║██╔══██╗██╔════╝██║████╗  ██║
+██╔████╔██║██║     ███████║██║   ██║██████╔╝███████╗██║██╔██╗ ██║
+██║╚██╔╝██║██║     ██╔══██║██║   ██║██╔══██╗╚════██║██║██║╚██╗██║
+██║ ╚═╝ ██║╚██████╗██║  ██║╚██████╔╝██║  ██║███████║██║██║ ╚████║
+╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝
+</pre>
+                </div>
+            </a>
+            <button class="burger-btn" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                <div class="burger-line"></div>
+                <div class="burger-line" id="burger-mid"></div>
+                <div class="burger-line"></div>
+            </button>
+        </header>
+
+        <!-- Mobile Navigation Dropdown -->
+        <nav class="mobile-nav" id="mobile-nav-menu">
+            {% for item in site.data.nav %}
+            <a href="{{ item.url | relative_url }}" class="mobile-nav-item {% assign is_post = false %}{% if page.layout == 'post' and item.url == '/blog.html' %}{% assign is_post = true %}{% endif %}{% if page.url == item.url or is_post %}active{% endif %}">
+                <span class="tree-icon fg-{{ item.color }}"><i class="fa-solid fa-{{ item.icon }}"></i></span>
+                {{ item.file }}
+            </a>
+            {% endfor %}
+        </nav>
+
+        <!-- Right Pane Buffer -->
+        <main class="neotree-buffer">
+            <div class="buffer-tabs">
+                <div class="buffer-tab">
+                    <span class="tab-icon"><i class="fa-brands fa-markdown fg-blue"></i></span>
+                    <span id="tab-filename">{{ page.file_name | default: "buffer.md" }}</span>
+                    <span class="tab-close"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            
+            <div class="buffer-content">
+                {{ content }}
+            </div>
+
+            <div class="statusline">
+                <div class="status-left">
+                    <span class="status-mode">NORMAL</span>
+                    <span><i class="fa-brands fa-git-alt fg-orange"></i> main</span>
+                    <span class="fg-blue" id="status-filename">{{ page.file_name | default: "buffer.md" }}</span>
+                </div>
+                <div class="status-right">
+                    <span>utf-8</span>
+                    <span class="fg-yellow">100% ☰ 1:1</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vanilla JS for Vim Motions and SPA Buffer Switching -->
+    <script src="{{ '/assets/js/lazyvim.js' | relative_url }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const navMenu = document.getElementById('mobile-nav-menu');
+            
+            if (toggleBtn && navMenu) {
+                toggleBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                    toggleBtn.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
