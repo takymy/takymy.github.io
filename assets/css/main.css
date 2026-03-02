@@ -353,10 +353,11 @@ a {
     font-size: 5px;
   }
 
-  /* Hide typical desktop neo-tree UI on mobile */
+  /* Hide typical desktop neo-tree UI and help widget on mobile */
   .neotree-sidebar,
   .buffer-tabs,
-  .statusline {
+  .statusline,
+  #lazyvim-help-widget {
     display: none !important;
   }
 
