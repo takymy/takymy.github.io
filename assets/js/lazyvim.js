@@ -78,17 +78,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Vim Motions (j/k/h/l or Arrows)
         if (e.key === 'j' || e.key === 'ArrowDown') {
             e.preventDefault(); // Prevent scrolling
-            if (currentIndex < navItems.length - 1) {
+            if (currentIndex === -1) {
+                const activeIdx = navItems.findIndex(item => item.classList.contains('active'));
+                currentIndex = activeIdx >= 0 ? activeIdx : 0;
+            } else if (currentIndex < navItems.length - 1) {
                 currentIndex++;
-                updateSelection();
             }
+            updateSelection();
         } 
         else if (e.key === 'k' || e.key === 'ArrowUp') {
             e.preventDefault(); // Prevent scrolling
-            if (currentIndex > 0) {
+            if (currentIndex === -1) {
+                const activeIdx = navItems.findIndex(item => item.classList.contains('active'));
+                currentIndex = activeIdx >= 0 ? activeIdx : (navItems.length > 0 ? navItems.length - 1 : 0);
+            } else if (currentIndex > 0) {
                 currentIndex--;
-                updateSelection();
             }
+            updateSelection();
         }
         else if (e.key === 'h' || e.key === 'ArrowLeft') {
             e.preventDefault();
@@ -154,7 +160,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const bufferContent = document.querySelector('.buffer-content');
         const tabName = document.getElementById('tab-filename');
         const statusFileName = document.getElementById('status-filename');
-        const dashboardLink = '{{ "/" | relative_url }}'; // Won't parse in raw JS, need exact string or logic
+        const dashboardLink = '/'; 
+        
+        // 1. Tab close action
+        const tabCloseBtn = document.querySelector('.tab-close');
+        if (tabCloseBtn) {
+            tabCloseBtn.addEventListener('click', () => {
+                window.location.href = dashboardLink; 
+            });
+        }
+
+        // 2. Scroll Percentage Indicator
+        const scrollPercentEl = document.getElementById('scroll-percentage');
+        
+        const updateScrollPercentage = () => {
+            if (!scrollPercentEl || !bufferContent) return;
+            const scrollTop = bufferContent.scrollTop;
+            const scrollHeight = bufferContent.scrollHeight;
+            const clientHeight = bufferContent.clientHeight;
+            
+            if (scrollHeight <= clientHeight) {
+                scrollPercentEl.textContent = '100%';
+                return;
+            }
+            
+            const percent = Math.floor((scrollTop / (scrollHeight - clientHeight)) * 100);
+            
+            if (percent === 0) {
+                scrollPercentEl.textContent = 'Top';
+            } else if (percent === 100) {
+                scrollPercentEl.textContent = 'Bot';
+            } else {
+                scrollPercentEl.textContent = percent + '%';
+            }
+        };
+
+        bufferContent.addEventListener('scroll', updateScrollPercentage);
+        window.addEventListener('resize', updateScrollPercentage);
+        updateScrollPercentage(); // Set initial state
         
         navItems.forEach(link => {
             // Hardcode root string check since we are in raw JS now
@@ -182,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newTabNameStr = doc.getElementById('tab-filename').textContent;
                     tabName.textContent = newTabNameStr;
                     statusFileName.textContent = newTabNameStr;
+                    
+                    // Reset scroll percentage view after buffer shift
+                    setTimeout(updateScrollPercentage, 50);
                     
                     // Push State to update standard browser URL
                     window.history.pushState({}, '', url);
