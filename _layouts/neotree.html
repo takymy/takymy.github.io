@@ -67,12 +67,8 @@
 
         <!-- Right Pane Buffer -->
         <main class="neotree-buffer">
-            <div class="buffer-tabs">
-                <div class="buffer-tab">
-                    <span class="tab-icon"><i class="fa-brands fa-markdown fg-blue"></i></span>
-                    <span id="tab-filename">{{ page.file_name | default: "buffer.md" }}</span>
-                    <span class="tab-close"><i class="fa-solid fa-xmark"></i></span>
-                </div>
+            <div class="buffer-tabs" id="editor-tabs">
+                <!-- Javascript injects tabs here -->
             </div>
             
             <div class="buffer-content">

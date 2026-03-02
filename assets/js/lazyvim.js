@@ -154,23 +154,98 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       3. SPA BUFFER SWITCHING (Neo-tree specific)
+       3. SPA BUFFER SWITCHING & TAB MANAGEMENT (Neo-tree specific)
        ========================================================================== */
     if (!isDashboard) {
         const bufferContent = document.querySelector('.buffer-content');
-        const tabName = document.getElementById('tab-filename');
         const statusFileName = document.getElementById('status-filename');
+        const tabsContainer = document.getElementById('editor-tabs');
         const dashboardLink = '/'; 
         
-        // 1. Tab close action
-        const tabCloseBtn = document.querySelector('.tab-close');
-        if (tabCloseBtn) {
-            tabCloseBtn.addEventListener('click', () => {
-                window.location.href = dashboardLink; 
-            });
-        }
+        const TABS_KEY = 'neovim_tabs';
+        
+        const getTabs = () => {
+            const tabsStr = sessionStorage.getItem(TABS_KEY);
+            return tabsStr ? JSON.parse(tabsStr) : [];
+        };
+        
+        const saveTabs = (tabs) => {
+            sessionStorage.setItem(TABS_KEY, JSON.stringify(tabs));
+        };
+        
+        const removeTab = (url) => {
+            let tabs = getTabs();
+            tabs = tabs.filter(t => t.url !== url);
+            saveTabs(tabs);
+            return tabs;
+        };
 
-        // 2. Scroll Percentage Indicator
+        const renderTabs = () => {
+            if (!tabsContainer) return;
+            const tabs = getTabs();
+            const currentUrl = window.location.pathname;
+            
+            tabsContainer.innerHTML = '';
+            
+            tabs.forEach(tab => {
+                const isActive = tab.url === currentUrl;
+                const tabEl = document.createElement('div');
+                tabEl.className = `buffer-tab ${isActive ? 'active' : ''}`;
+                tabEl.onclick = () => { if (!isActive) navigateTo(tab.url, false); };
+                
+                tabEl.innerHTML = `
+                    <span class="tab-icon"><i class="${tab.iconClass}"></i></span>
+                    <span>${tab.title}</span>
+                    <span class="tab-close"><i class="fa-solid fa-xmark"></i></span>
+                `;
+                
+                const closeBtn = tabEl.querySelector('.tab-close');
+                closeBtn.onclick = (e) => {
+                    e.stopPropagation(); 
+                    const remaining = removeTab(tab.url);
+                    if (isActive) {
+                        // If we closed the active tab, go to the last available tab, or dashboard
+                        if (remaining.length > 0) {
+                            navigateTo(remaining[remaining.length - 1].url, false);
+                        } else {
+                            window.location.href = dashboardLink;
+                        }
+                    } else {
+                        renderTabs(); // Just re-render if it wasn't the active one
+                    }
+                };
+                
+                tabsContainer.appendChild(tabEl);
+            });
+            
+            setTimeout(() => {
+                const activeTab = tabsContainer.querySelector('.active');
+                if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }, 50);
+        };
+        
+        const initCurrentTab = () => {
+            const currentUrl = window.location.pathname;
+            let tabs = getTabs();
+            
+            const activeSidebarLink = document.querySelector('.tree-node.active');
+            let docTitle = "buffer.md";
+            let iconClass = "fa-brands fa-markdown fg-blue";
+            
+            if (activeSidebarLink) {
+                docTitle = activeSidebarLink.textContent.trim();
+                const iconEl = activeSidebarLink.querySelector('i');
+                if (iconEl) iconClass = iconEl.className;
+            }
+            
+            if (!tabs.find(t => t.url === currentUrl)) {
+                tabs.push({ url: currentUrl, title: docTitle, iconClass: iconClass });
+                saveTabs(tabs);
+            }
+            
+            renderTabs();
+        };
+
         const scrollPercentEl = document.getElementById('scroll-percentage');
         
         const updateScrollPercentage = () => {
@@ -197,51 +272,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
         bufferContent.addEventListener('scroll', updateScrollPercentage);
         window.addEventListener('resize', updateScrollPercentage);
-        updateScrollPercentage(); // Set initial state
+        updateScrollPercentage(); 
         
+        const navigateTo = async (url, pushState = true) => {
+            const sidebarLink = navItems.find(l => l.getAttribute('href') === url);
+            let docTitle = "buffer.md";
+            let iconClass = "fa-brands fa-markdown fg-blue";
+            
+            if (sidebarLink) {
+                docTitle = sidebarLink.textContent.trim();
+                const iconEl = sidebarLink.querySelector('i');
+                if (iconEl) iconClass = iconEl.className;
+            }
+
+            navItems.forEach(l => l.classList.remove('active'));
+            if (sidebarLink) sidebarLink.classList.add('active');
+            
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                
+                const newContent = doc.querySelector('.buffer-content').innerHTML;
+                bufferContent.innerHTML = newContent;
+                
+                const newStatusFileNameStr = doc.getElementById('status-filename').textContent;
+                if (statusFileName) statusFileName.textContent = newStatusFileNameStr;
+                
+                let tabs = getTabs();
+                if (!tabs.find(t => t.url === url)) {
+                    tabs.push({ url: url, title: docTitle, iconClass: iconClass });
+                    saveTabs(tabs);
+                }
+                
+                if (pushState) {
+                    window.history.pushState({}, '', url);
+                }
+                
+                renderTabs();
+                setTimeout(updateScrollPercentage, 50);
+                
+            } catch (err) {
+                console.error('Buffer fetch failed:', err);
+                window.location.href = url;
+            }
+        };
+
         navItems.forEach(link => {
-            // Hardcode root string check since we are in raw JS now
             if (link.getAttribute('href') === '/' || link.getAttribute('href') === '/index.html') return;
             
-            link.addEventListener('click', async (e) => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                const url = link.getAttribute('href');
-                
-                // Update active sidebar styles (regular clicks)
-                navItems.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                try {
-                    const response = await fetch(url);
-                    const html = await response.text();
-                    const doc = new DOMParser().parseFromString(html, 'text/html');
-                    
-                    // Swap right pane buffer content
-                    const newContent = doc.querySelector('.buffer-content').innerHTML;
-                    bufferContent.innerHTML = newContent;
-                    
-                    // Update UI names from the parsed document
-                    const newTabNameStr = doc.getElementById('tab-filename').textContent;
-                    tabName.textContent = newTabNameStr;
-                    statusFileName.textContent = newTabNameStr;
-                    
-                    // Reset scroll percentage view after buffer shift
-                    setTimeout(updateScrollPercentage, 50);
-                    
-                    // Push State to update standard browser URL
-                    window.history.pushState({}, '', url);
-                    
-                } catch (err) {
-                    console.error('Buffer fetch failed:', err);
-                    window.location.href = url; // Fallback
-                }
+                navigateTo(link.getAttribute('href'), true);
             });
         });
 
         window.addEventListener('popstate', () => {
             window.location.reload(); 
         });
+        
+        initCurrentTab();
     }
 
 });
