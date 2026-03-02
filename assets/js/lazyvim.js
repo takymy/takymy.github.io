@@ -20,7 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="fg-blue hint-text">(Hover or click to toggle)</p>
         </div>
     `;
-    document.body.appendChild(helpWidget);
+    
+    // Only append to DOM on larger screens
+    if (window.innerWidth > 768) {
+        document.body.appendChild(helpWidget);
+    }
 
     // Toggle help content on click (or hover handled via CSS)
     helpWidget.addEventListener('click', () => {
