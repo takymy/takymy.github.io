@@ -11,7 +11,7 @@ file_name: experience.md
     <p><span class="fg-purple">@ {{ exp.company }}</span> &nbsp;|&nbsp; <span class="fg-orange">{{ exp.date }}</span></p>
     <ul>
         {% for item in exp.description %}
-        <li><span class="fg-cyan">-</span> {{ item }}</li>
+        <li>{{ item }}</li>
         {% endfor %}
     </ul>
 </div>
