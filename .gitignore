@@ -21,3 +21,5 @@ Thumbs.db
 # Node modules (if you ever use NPM)
 node_modules/
 package-lock.json
+
+PROJECT_STRUCTURE.md

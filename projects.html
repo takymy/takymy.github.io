@@ -1,0 +1,21 @@
+---
+layout: neotree
+file_name: projects.md
+---
+
+<h1># Projects Archive</h1>
+
+{% for proj in site.data.projects %}
+<div class="project-block">
+    <h3>### {{ proj.title }}</h3>
+    <p>{{ proj.description }}</p>
+    
+    <div class="tags-container">
+        <span class="fg-yellow">Tags:</span>
+        {% for tag in proj.tags %}
+        <span class="fg-blue">[{{ tag }}]</span>
+        {% endfor %}
+        <span><a href="{{ proj.link }}" target="_blank" class="fg-green">[Link_to_Repo]</a></span>
+    </div>
+</div>
+{% endfor %}

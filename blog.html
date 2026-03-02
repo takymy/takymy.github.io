@@ -1,0 +1,17 @@
+---
+layout: neotree
+file_name: blog.md
+---
+
+<h1># My Blog</h1>
+<p class="fg-orange">Found {{ site.posts | size }} posts...</p>
+
+<ul>
+  {% for post in site.posts %}
+    <li class="post-item">
+      <span class="fg-purple">[{{ post.date | date: "%Y-%m-%d" }}]</span> 
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </li>
+  {% endfor %}
+</ul>

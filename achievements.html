@@ -1,0 +1,13 @@
+---
+layout: neotree
+file_name: achievements.md
+---
+
+<h1># Achievements & Certs</h1>
+
+{% for ach in site.data.achievements %}
+<div class="content-block">
+    <h3>### <i class="fa-solid fa-{{ ach.icon }} fg-orange"></i> {{ ach.title }}</h3>
+    <p>> {{ ach.description }}</p>
+</div>
+{% endfor %}

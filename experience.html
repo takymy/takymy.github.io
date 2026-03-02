@@ -1,0 +1,18 @@
+---
+layout: neotree
+file_name: experience.md
+---
+
+<h1># Experience Log</h1>
+
+{% for exp in site.data.experience %}
+<div class="content-block">
+    <h3>### {{ exp.role }}</h3>
+    <p><span class="fg-purple">@ {{ exp.company }}</span> &nbsp;|&nbsp; <span class="fg-orange">{{ exp.date }}</span></p>
+    <ul>
+        {% for item in exp.description %}
+        <li><span class="fg-cyan">-</span> {{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}

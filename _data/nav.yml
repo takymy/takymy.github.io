@@ -1,12 +1,34 @@
-- title: About
-  url: /#about
+- title: About Me
+  url: /about.html
+  file: about.md
+  icon: user
+  color: blue
+  key: a
+
 - title: Experience
-  url: /#experience
+  url: /experience.html
+  file: experience.md
+  icon: briefcase
+  color: green
+  key: e
+
 - title: Projects
-  url: /#projects
+  url: /projects.html
+  file: projects.md
+  icon: code
+  color: yellow
+  key: p
+
 - title: Achievements
-  url: /#achievements
+  url: /achievements.html
+  file: achievements.md
+  icon: trophy
+  color: orange
+  key: c
+
 - title: Blog
-  url: /blog
-- title: Contact
-  url: /#contact
+  url: /blog.html
+  file: blog.md
+  icon: pen-nib
+  color: purple
+  key: b

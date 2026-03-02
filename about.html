@@ -1,0 +1,25 @@
+---
+layout: neotree
+file_name: about.md
+---
+
+<h1># About Me</h1>
+
+<img src="{{ '/about.jpg' | relative_url }}" alt="Mykyta Chursin" class="profile-pic">
+
+<p>Hi, I'm <span class="fg-blue">{{ site.data.about.headline }}</span> 👋</p>
+<p>A <span class="fg-orange">{{ site.data.about.subheadline }}</span>.</p>
+
+<br>
+<h2>## Bio</h2>
+{% for p in site.data.about.bio %}
+<p>{{ p }}</p>
+{% endfor %}
+
+<br>
+<h2>## Skills & Tools</h2>
+<ul>
+    {% for skill in site.data.about.skills %}
+    <li><span class="fg-green">+</span> {{ skill }}</li>
+    {% endfor %}
+</ul>
