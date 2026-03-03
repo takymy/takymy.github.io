@@ -23,3 +23,11 @@ file_name: about.md
     <li>{{ skill }}</li>
     {% endfor %}
 </ul>
+
+<br>
+<h2>## Contact Me</h2>
+<p>
+  <a href="mailto:{{ site.data.about.contact.email }}" class="fg-blue">[Email: {{ site.data.about.contact.email }}]</a><br>
+  <a href="{{ site.data.about.contact.github }}" target="_blank" class="fg-green">[GitHub]</a><br>
+  <a href="{{ site.data.about.contact.linkedin }}" target="_blank" class="fg-yellow">[LinkedIn]</a>
+</p>

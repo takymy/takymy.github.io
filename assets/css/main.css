@@ -184,11 +184,12 @@ a {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-main);
+  min-width: 0; /* Prevent flex children from overflowing horizontally */
 }
 
 .buffer-tabs {   
   display: flex;
-  flex-shrink: 0;
+  flex: 0 0 auto; /* explicitly prevent growing or shrinking, height should be autonomous */
   background-color: #1d2021;
   border-bottom: 1px solid #504945;
   padding-top: 8px; /* 8px padding above tabs */
@@ -248,13 +249,17 @@ a {
 .buffer-content {
   padding: 30px;
   overflow-y: auto;
-  flex-grow: 1;
+  flex: 1 1 auto;
+  min-height: 0; /* CRITICAL: prevents long content from forcing the parent to grow past 100vh */
 }
 
 .buffer-content h1 { color: var(--blue); margin-top: 0; }
 .buffer-content h2 { color: var(--green); border-bottom: 1px dashed #504945; padding-bottom: 5px;}
 .buffer-content h3 { color: var(--yellow); }
-.buffer-content a { color: var(--blue); text-decoration: underline; }
+.buffer-content a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+.buffer-content a.fg-green { color: var(--green); }
+.buffer-content a.fg-yellow { color: var(--yellow); }
+.buffer-content a.fg-purple { color: var(--purple); }
 .buffer-content p, .buffer-content ul { margin-bottom: 15px; }
 .buffer-content li { margin-bottom: 5px; }
 
