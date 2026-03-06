@@ -1,8 +1,3 @@
-- title: Maze Runner
-  description: A pathfinding program developed as part of my first-year University coursework. It implements a custom-written floodfill algorithm to navigate through complex, generated mazes to find the optimal path to the exit.
-  tags: [Algorithms, Floodfill, Coursework]
-  link: "https://github.com/takymy/UoS-Micromouse-Maze-Runner"
-
 - title: Office Network Cisco Packet Tracer Project
   description: Designed and simulated a secure, multi-department office network. Implemented IP addressing, subnetting and VLANs to segment traffic between departments. Configured core network services, including DHCP for dynamic IP allocation.
   tags: [Networking, Cisco, Packet Tracer]
@@ -12,6 +7,16 @@
   description: Developed an app as a part of my second year coursework for Software Design and Development module. The app is designed to provide users with information about sexual health and STIs. It also includes a feature to book appointments and see test results.
   tags: [Java, Coursework, OOP]
   link: "#"
+
+- title: RDFLite
+  description: RDFLite is a domain specific programming language for querying simple RDF documents. RDF - the Resource Description Framework - is a data model and syntax for describing graphs, and is the underlying technology used on the Semantic Web. Was developed by me and my coursemates as a part of Programming Language Concepts coursework.
+  tags: [Haskell, Algorithms, Coursework]
+  link: "https://github.com/takymy/RDFLite"
+
+- title: Maze Runner
+  description: A pathfinding program developed as part of my first-year University coursework. It implements a custom-written floodfill algorithm to navigate through complex, generated mazes to find the optimal path to the exit.
+  tags: [Algorithms, Floodfill, Coursework]
+  link: "https://github.com/takymy/UoS-Micromouse-Maze-Runner"
 
 - title: This Portfolio Website
   description: I built this portfolio using Jekyll (an ultra-minimal static site generator). No heavy Javascript frameworks, just raw HTML/CSS wrapped in YAML data objects.
