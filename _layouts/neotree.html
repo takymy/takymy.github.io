@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
 </head>
 <body>
     <div class="neotree-layout">
@@ -22,7 +23,7 @@
             <!-- Expandable Folders Structure -->
             <div class="tree-node">
                 <span class="tree-icon fg-yellow"><i class="fa-solid fa-folder-open"></i></span>
-                Personal-website
+                Portfolio-website
             </div>
             
             {% for item in site.data.nav %}
