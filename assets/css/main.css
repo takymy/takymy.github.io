@@ -339,16 +339,16 @@ a {
 
 #lazyvim-help-widget {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 35px;
+  left: 35px;
   background-color: #1d2021;
   border: 1px solid #504945;
   border-radius: 6px;
   padding: 10px 15px;
   width: max-content;
   min-width: 200px;
-  max-width: 300px;
-  max-height: 42px; /* Collapsed state */
+  max-width: 200px;
+  max-height: 25px; /* Collapsed state */
   overflow: hidden;
   transition: max-height 0.3s ease, border-color 0.3s;
   cursor: pointer;

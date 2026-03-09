@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><span class="fg-orange">Enter</span> : Open file</p>
             <p><span class="fg-orange">Esc</span> : Close menu</p>
             <br>
-            <p class="fg-blue hint-text">(Hover or click to toggle)</p>
+            <p class="fg-blue hint-text">(Click to toggle)</p>
         </div>
     `;
     
