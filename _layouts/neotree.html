@@ -11,8 +11,9 @@
 </head>
 <body>
     <div class="neotree-layout">
-        <!-- Sidebar Tree -->
-        <aside class="neotree-sidebar">
+        <div class="neotree-main-container">
+            <!-- Sidebar Tree -->
+            <aside class="neotree-sidebar">
             <div class="neotree-header">Neo-tree</div>
             
             <a href="{{ '/' | relative_url }}" class="tree-node">
@@ -75,19 +76,20 @@
             <div class="buffer-content">
                 {{ content }}
             </div>
-
-            <div class="statusline">
-                <div class="status-left">
-                    <span class="status-mode">NORMAL</span>
-                    <span><i class="fa-brands fa-git-alt fg-orange"></i> main</span>
-                    <span class="fg-blue" id="status-filename">{{ page.file_name | default: "buffer.md" }}</span>
-                </div>
-                <div class="status-right">
-                    <span>utf-8</span>
-                    <span class="fg-yellow"><span id="scroll-percentage">100%</span> ☰ 1:1</span>
-                </div>
-            </div>
         </main>
+        </div>
+
+        <div class="statusline">
+            <div class="status-left">
+                <span class="status-mode">NORMAL</span>
+                <span><i class="fa-brands fa-git-alt fg-orange"></i> main</span>
+                <span class="fg-blue" id="status-filename">{{ page.file_name | default: "buffer.md" }}</span>
+            </div>
+            <div class="status-right">
+                <span>utf-8</span>
+                <span class="fg-yellow"><span id="scroll-percentage">100%</span> ☰ 1:1</span>
+            </div>
+        </div>
     </div>
 
     <!-- Vanilla JS for Vim Motions and SPA Buffer Switching -->

@@ -124,9 +124,18 @@ a {
    ========================================================================== */
 .neotree-layout {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+}
+
+.neotree-main-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  min-height: 0;
+  width: 100%;
 }
 
 /* Sidebar Tree */
@@ -404,6 +413,14 @@ a {
     flex-direction: column;
     height: auto;
     min-height: 100vh;
+  }
+
+  .neotree-main-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+    width: 100%;
   }
 
   .neotree-buffer {
