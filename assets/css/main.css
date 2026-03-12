@@ -6,7 +6,7 @@
   /* Gruvbox Dark Palette */
   --bg-main: #282828;
   --fg-main: #ebdbb2;
-  
+
   --blue: #83a598;
   --green: #b8bb26;
   --yellow: #fabd2f;
@@ -14,8 +14,8 @@
   --purple: #d3869b;
   --red: #fb4934;
   --cyan: #8ec07c;
-  
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 }
 
 body {
@@ -37,13 +37,27 @@ a {
 }
 
 /* Base Colors */
-.fg-blue { color: var(--blue); }
-.fg-green { color: var(--green); }
-.fg-yellow { color: var(--yellow); }
-.fg-orange { color: var(--orange); }
-.fg-purple { color: var(--purple); }
-.fg-red { color: var(--red); }
-.fg-cyan { color: var(--cyan); }
+.fg-blue {
+  color: var(--blue);
+}
+.fg-green {
+  color: var(--green);
+}
+.fg-yellow {
+  color: var(--yellow);
+}
+.fg-orange {
+  color: var(--orange);
+}
+.fg-purple {
+  color: var(--purple);
+}
+.fg-red {
+  color: var(--red);
+}
+.fg-cyan {
+  color: var(--cyan);
+}
 
 /* ==========================================================================
    DASHBOARD LAYOUT (Home / LazyVim Splash)
@@ -170,7 +184,8 @@ a {
   transition: background-color 0.1s;
   text-decoration: none;
 }
-.tree-node:hover, .tree-node.active {
+.tree-node:hover,
+.tree-node.active {
   background-color: rgba(255, 255, 255, 0.05);
 }
 .tree-node.active {
@@ -196,7 +211,7 @@ a {
   min-width: 0; /* Prevent flex children from overflowing horizontally */
 }
 
-.buffer-tabs {   
+.buffer-tabs {
   display: flex;
   flex: 0 0 auto; /* explicitly prevent growing or shrinking, height should be autonomous */
   background-color: #1d2021;
@@ -205,7 +220,7 @@ a {
   padding-left: 10px;
   overflow-x: auto;
   gap: 2px;
-  scrollbar-width: none; 
+  scrollbar-width: none;
   align-items: flex-end; /* This forces tabs to align to the bottom container border */
 }
 .buffer-tabs::-webkit-scrollbar {
@@ -216,7 +231,7 @@ a {
   height: 36px;
   padding: 0 15px;
   background-color: transparent; /* INACTIVE tab matches the #1d2021 tab bar */
-  color: #a89984; 
+  color: #a89984;
   border-radius: 4px 4px 0 0;
   border: 1px solid transparent; /* Invisible border prevents jumping */
   border-bottom: none;
@@ -262,46 +277,70 @@ a {
   min-height: 0; /* CRITICAL: prevents long content from forcing the parent to grow past 100vh */
 }
 
-.buffer-content h1 { color: var(--blue); margin-top: 0; }
-.buffer-content h2 { color: var(--green); border-bottom: 1px dashed #504945; padding-bottom: 5px;}
-.buffer-content h3 { color: var(--yellow); }
-.buffer-content a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
-.buffer-content a.fg-green { color: var(--green); }
-.buffer-content a.fg-yellow { color: var(--yellow); }
-.buffer-content a.fg-purple { color: var(--purple); }
-.buffer-content p, .buffer-content ul { margin-bottom: 15px; }
-.buffer-content li { margin-bottom: 5px; }
+.buffer-content h1 {
+  color: var(--blue);
+  margin-top: 0;
+}
+.buffer-content h2 {
+  color: var(--green);
+  border-bottom: 1px dashed #504945;
+  padding-bottom: 5px;
+}
+.buffer-content h3 {
+  color: var(--yellow);
+}
+.buffer-content a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.buffer-content a.fg-green {
+  color: var(--green);
+}
+.buffer-content a.fg-yellow {
+  color: var(--yellow);
+}
+.buffer-content a.fg-purple {
+  color: var(--purple);
+}
+.buffer-content p,
+.buffer-content ul {
+  margin-bottom: 15px;
+}
+.buffer-content li {
+  margin-bottom: 5px;
+}
 
 /* Refactored Layout Utilities */
 .content-block {
   margin-bottom: 30px;
 }
 .project-block {
-  margin-bottom: 40px; 
-  border-bottom: 1px dashed #504945; 
+  margin-bottom: 40px;
+  border-bottom: 1px dashed #504945;
   padding-bottom: 20px;
 }
 .tags-container {
-  margin-top: 15px; 
-  display: flex; 
-  gap: 10px; 
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
 }
 .post-excerpt {
-  font-size: 0.9em; 
-  margin-top: 5px; 
+  font-size: 0.9em;
+  margin-top: 5px;
   color: #a89984;
 }
 .post-item {
   margin-bottom: 15px;
 }
 .hint-text {
-  font-size: 0.8em; 
+  font-size: 0.8em;
   text-align: center;
 }
 .profile-pic {
   display: block;
-  max-width: 200px;
+  max-width: 300px;
   border: 2px dashed var(--yellow);
   padding: 5px;
   border-radius: 4px;
@@ -317,7 +356,8 @@ a {
   justify-content: space-between;
   font-size: 0.85em;
 }
-.status-left, .status-right {
+.status-left,
+.status-right {
   display: flex;
   gap: 15px;
 }
@@ -350,13 +390,16 @@ a {
   max-width: 200px;
   max-height: 25px; /* Collapsed state */
   overflow: hidden;
-  transition: max-height 0.3s ease, border-color 0.3s;
+  transition:
+    max-height 0.3s ease,
+    border-color 0.3s;
   cursor: pointer;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-#lazyvim-help-widget:hover, #lazyvim-help-widget.expanded {
+#lazyvim-help-widget:hover,
+#lazyvim-help-widget.expanded {
   max-height: 300px;
   border-color: var(--blue);
 }
@@ -378,7 +421,7 @@ a {
   transition: opacity 0.2s ease;
 }
 
-#lazyvim-help-widget:hover .help-content, 
+#lazyvim-help-widget:hover .help-content,
 #lazyvim-help-widget.expanded .help-content {
   opacity: 1;
   pointer-events: auto;
@@ -451,9 +494,9 @@ a {
     white-space: pre;
     overflow: hidden;
   }
-  
+
   .mobile-ascii pre {
-      margin: 0;
+    margin: 0;
   }
 
   /* Hollow Burger Menu */
