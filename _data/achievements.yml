@@ -2,10 +2,14 @@
   description: Certified Junior Cybersecurity Analyst. Gained foundational knowledge in cybersecurity principles, networking concepts, and basic threat analysis methodologies.
   icon: shield
 
-- title: 2nd Place - Soton Hack 2025
+- title: 2nd Place - SotonHack 2025
   description: Competed in the University of Southampton hackathon, collaborating under pressure to build and pitch a functional prototype within a strict time limit.
-  icon: medal
+  icon: award
+
+- title: Best use of Solana track - SotonHack 2026
+  description: Built Gambl.inc - a platform where developer productivity becomes a prediction market. Whenever a Github issue is assigned, it becomes a bettable task on the platform. Used Solana devnet blockchain.
+  icon: award
 
 - title: Computer Science Student of the Year
   description: Awarded at Cox Green School, Maidenhead, for outstanding academic performance and dedication to the subject.
-  icon: award
+  icon: medal
