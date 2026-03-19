@@ -3,6 +3,11 @@
   tags: [Networking, Cisco, Packet Tracer]
   link: "#"
 
+- title: Kribb
+  description: Krib is a cross-platform app that streamlines the student accommodation search for students. It allows users to swipe left and right on properties (Tinder style, ADHD friednly), vote on their favorite properties and create groups with their flatmates to make decisions together. AI enquiry feature is available for users to get in touch with property owners.
+  tags: [React Native, Expo]
+  link: "https://github.com/takymy/Krib"
+
 - title: IntiHealth
   description: A digital sexual health app that was developed by me and my coursemates as a part of my second year coursework for Software Design and Development module. The app is designed to provide users with information about sexual health and STIs. It also includes a feature to book appointments and see test results.
   tags: [Java, Coursework, OOP]
