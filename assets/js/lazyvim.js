@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="fg-blue hint-text">(Click to toggle)</p>
         </div>
     `;
-    
+
     // Only append to DOM on larger screens
     if (window.innerWidth > 768) {
         document.body.appendChild(helpWidget);
@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        2. VIM MOTIONS & KEYBOARD NAVIGATION
        ========================================================================== */
-       
+
     // Determine context: Are we on the Dashboard (.menu-item) or Neotree (.tree-node)?
     let isDashboard = document.querySelector('.dashboard-menu') !== null;
-    let navItems = isDashboard 
+    let navItems = isDashboard
         ? Array.from(document.querySelectorAll('.menu-item'))
         : Array.from(document.querySelectorAll('.tree-node')).filter(node => node.getAttribute('href') !== null);
-    
+
     let currentIndex = -1;
 
     // Helper to visually update selection
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentIndex++;
             }
             updateSelection();
-        } 
+        }
         else if (e.key === 'k' || e.key === 'ArrowUp') {
             e.preventDefault(); // Prevent scrolling
             if (currentIndex === -1) {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (e.key === 'l' || e.key === 'ArrowRight') {
             e.preventDefault();
             if (currentIndex >= 0 && currentIndex < navItems.length) {
-                navItems[currentIndex].click(); 
+                navItems[currentIndex].click();
                 if (!isDashboard) {
                     navItems.forEach(item => item.classList.remove('vim-selected'));
                     currentIndex = -1; // Remove focus from tree, simulating drop into right buffer
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (e.key === 'Enter') {
             if (currentIndex >= 0 && currentIndex < navItems.length) {
-                navItems[currentIndex].click(); 
+                navItems[currentIndex].click();
                 if (!isDashboard) {
                     navItems.forEach(item => item.classList.remove('vim-selected'));
                     currentIndex = -1;
@@ -154,19 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const bufferContent = document.querySelector('.buffer-content');
         const statusFileName = document.getElementById('status-filename');
         const tabsContainer = document.getElementById('editor-tabs');
-        const dashboardLink = '/'; 
-        
+        const dashboardLink = '/';
+
         const TABS_KEY = 'neovim_tabs';
-        
+
         const getTabs = () => {
             const tabsStr = sessionStorage.getItem(TABS_KEY);
             return tabsStr ? JSON.parse(tabsStr) : [];
         };
-        
+
         const saveTabs = (tabs) => {
             sessionStorage.setItem(TABS_KEY, JSON.stringify(tabs));
         };
-        
+
         const removeTab = (url) => {
             let tabs = getTabs();
             tabs = tabs.filter(t => t.url !== url);
@@ -178,24 +178,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!tabsContainer) return;
             const tabs = getTabs();
             const currentUrl = window.location.pathname;
-            
+
             tabsContainer.innerHTML = '';
-            
+
             tabs.forEach(tab => {
                 const isActive = tab.url === currentUrl;
                 const tabEl = document.createElement('div');
                 tabEl.className = `buffer-tab ${isActive ? 'active' : ''}`;
                 tabEl.onclick = () => { if (!isActive) navigateTo(tab.url, true); };
-                
+
                 tabEl.innerHTML = `
                     <span class="tab-icon"><i class="fa-brands fa-markdown fg-blue"></i></span>
                     <span>${tab.title}</span>
                     <span class="tab-close"><i class="fa-solid fa-xmark"></i></span>
                 `;
-                
+
                 const closeBtn = tabEl.querySelector('.tab-close');
                 closeBtn.onclick = (e) => {
-                    e.stopPropagation(); 
+                    e.stopPropagation();
                     const remaining = removeTab(tab.url);
                     if (isActive) {
                         // If we closed the active tab, go to the last available tab, or dashboard
@@ -208,50 +208,50 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderTabs(); // Just re-render if it wasn't the active one
                     }
                 };
-                
+
                 tabsContainer.appendChild(tabEl);
             });
-            
+
             setTimeout(() => {
                 const activeTab = tabsContainer.querySelector('.active');
                 if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }, 50);
         };
-        
+
         const initCurrentTab = () => {
             const currentUrl = window.location.pathname;
             let tabs = getTabs();
-            
+
             const activeSidebarLink = document.querySelector('.tree-node.active');
             let docTitle = "buffer.md";
-            
+
             if (activeSidebarLink) {
                 docTitle = activeSidebarLink.textContent.trim();
             }
-            
+
             if (!tabs.find(t => t.url === currentUrl)) {
                 tabs.push({ url: currentUrl, title: docTitle });
                 saveTabs(tabs);
             }
-            
+
             renderTabs();
         };
 
         const scrollPercentEl = document.getElementById('scroll-percentage');
-        
+
         const updateScrollPercentage = () => {
             if (!scrollPercentEl || !bufferContent) return;
             const scrollTop = bufferContent.scrollTop;
             const scrollHeight = bufferContent.scrollHeight;
             const clientHeight = bufferContent.clientHeight;
-            
+
             if (scrollHeight <= clientHeight) {
                 scrollPercentEl.textContent = '100%';
                 return;
             }
-            
+
             const percent = Math.floor((scrollTop / (scrollHeight - clientHeight)) * 100);
-            
+
             if (percent === 0) {
                 scrollPercentEl.textContent = 'Top';
             } else if (percent === 100) {
@@ -263,43 +263,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         bufferContent.addEventListener('scroll', updateScrollPercentage);
         window.addEventListener('resize', updateScrollPercentage);
-        updateScrollPercentage(); 
-        
+        updateScrollPercentage();
+
         const navigateTo = async (url, pushState = true) => {
             const sidebarLink = navItems.find(l => l.getAttribute('href') === url);
             let docTitle = "buffer.md";
-            
+
             if (sidebarLink) {
                 docTitle = sidebarLink.textContent.trim();
             }
 
             navItems.forEach(l => l.classList.remove('active'));
             if (sidebarLink) sidebarLink.classList.add('active');
-            
+
             try {
                 const response = await fetch(url);
                 const html = await response.text();
                 const doc = new DOMParser().parseFromString(html, 'text/html');
-                
+
                 const newContent = doc.querySelector('.buffer-content').innerHTML;
                 bufferContent.innerHTML = newContent;
-                
+                bufferContent.classList.remove('buffer-content-entering');
+                void bufferContent.offsetWidth;
+                bufferContent.classList.add('buffer-content-entering');
+
                 const newStatusFileNameStr = doc.getElementById('status-filename').textContent;
                 if (statusFileName) statusFileName.textContent = newStatusFileNameStr;
-                
+
                 let tabs = getTabs();
                 if (!tabs.find(t => t.url === url)) {
                     tabs.push({ url: url, title: docTitle });
                     saveTabs(tabs);
                 }
-                
+
                 if (pushState) {
                     window.history.pushState({}, '', url);
                 }
-                
+
                 renderTabs();
                 setTimeout(updateScrollPercentage, 50);
-                
+
             } catch (err) {
                 console.error('Buffer fetch failed:', err);
                 window.location.href = url;
@@ -308,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navItems.forEach(link => {
             if (link.getAttribute('href') === '/' || link.getAttribute('href') === '/index.html') return;
-            
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 navigateTo(link.getAttribute('href'), true);
@@ -316,10 +318,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('popstate', () => {
-            window.location.reload(); 
+            window.location.reload();
         });
-        
+
         initCurrentTab();
+    }
+
+    // Mobile burger menu
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.getElementById('mobile-nav-menu');
+    if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            toggleBtn.classList.toggle('active');
+        });
     }
 
 });

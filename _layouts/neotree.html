@@ -92,20 +92,6 @@
         </div>
     </div>
 
-    <!-- Vanilla JS for Vim Motions and SPA Buffer Switching -->
     <script src="{{ '/assets/js/lazyvim.js' | relative_url }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('mobile-menu-toggle');
-            const navMenu = document.getElementById('mobile-nav-menu');
-            
-            if (toggleBtn && navMenu) {
-                toggleBtn.addEventListener('click', () => {
-                    navMenu.classList.toggle('open');
-                    toggleBtn.classList.toggle('active');
-                });
-            }
-        });
-    </script>
 </body>
 </html>

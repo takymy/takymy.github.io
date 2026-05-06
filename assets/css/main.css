@@ -104,9 +104,15 @@ a {
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
+  transition: background-color 0.15s, transform 0.15s;
 }
 .menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.05); /* very subtle highlight */
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateX(6px);
+}
+.menu-item:active {
+  transform: translateX(6px) scale(0.97);
+  opacity: 0.8;
 }
 
 .menu-left {
@@ -181,15 +187,21 @@ a {
   gap: 10px;
   cursor: pointer;
   color: var(--fg-main);
-  transition: background-color 0.1s;
+  transition: background-color 0.1s, transform 0.12s, box-shadow 0.12s;
   text-decoration: none;
 }
-.tree-node:hover,
-.tree-node.active {
-  background-color: rgba(255, 255, 255, 0.05);
+.tree-node:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateX(3px);
+  box-shadow: inset 3px 0 0 var(--blue);
 }
 .tree-node.active {
+  background-color: rgba(255, 255, 255, 0.05);
   color: var(--green);
+}
+.tree-node:active {
+  transform: translateX(3px) scale(0.98);
+  opacity: 0.75;
 }
 .tree-indent {
   padding-left: 35px;
@@ -269,12 +281,23 @@ a {
 .buffer-tab .tab-close:hover {
   background-color: rgba(251, 73, 52, 0.2); /* subtle red hover */
 }
+.buffer-tab:active {
+  transform: scale(0.97);
+}
 
 .buffer-content {
   padding: 30px;
   overflow-y: auto;
   flex: 1 1 auto;
   min-height: 0; /* CRITICAL: prevents long content from forcing the parent to grow past 100vh */
+}
+
+@keyframes bufferFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.buffer-content-entering {
+  animation: bufferFadeIn 0.22s ease;
 }
 
 .buffer-content h1 {
@@ -558,6 +581,14 @@ a {
     align-items: center;
     gap: 15px;
     border-bottom: 1px dashed #3c3836;
+    transition: background-color 0.1s, padding-left 0.12s;
+  }
+  .mobile-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding-left: 28px;
+  }
+  .mobile-nav-item:active {
+    opacity: 0.7;
   }
 
   .mobile-nav-item:last-child {
@@ -580,3 +611,4 @@ a {
     display: flex;
   }
 }
+
