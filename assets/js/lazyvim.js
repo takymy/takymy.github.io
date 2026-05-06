@@ -126,13 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Dashboard specific shortcuts mapped to hrefs (e.g., 'p' for Projects)
     if (isDashboard) {
-        const dashboardShortcuts = {
-            'a': '{{ "/#about" | relative_url }}', // Note: Jekyll vars won't parse in a pure JS file unless it's served by Jekyll with YAML frontmatter.
-            // Since this is a pure JS file, we will dynamically read them from the DOM
-        };
-        
         // Build shortcut map from DOM elements
         const shortcutMap = {};
         navItems.forEach(item => {
