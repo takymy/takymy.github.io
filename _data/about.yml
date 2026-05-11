@@ -1,23 +1,37 @@
 headline: Mykyta Chursin
 subheadline: Software Developer - Security Engineer - AI Enthusiast
-bio:
-  - "Hi, I’m Mykyta Chursin, a Computer Science with Cybersecurity student at University of Southampton."
-  - "I’m a software developer with experience in web application development, from simple landing pages to complex e-commerce platforms built with React, TypeScript, and Node.js. I also work with Python, Java, and C, and I continuously expand my technical skill set."
-  - "My long-term goal is to become a security engineer. I’m focused on understanding how data flows through systems, how protocols enable communication, and where weaknesses appear."
-  - "I’m currently pursuing the HTB CJCA certification, strengthening my knowledge in penetration testing methodologies, reconnaissance, exploitation, privilege escalation, network traffic analysis, and SIEM-based log analysis."
+about:
+  bio:
+    - "Hi, I'm Mykyta — a Computer Science with Cybersecurity student at the University of Southampton."
+    - "I build full-stack web applications, from simple landing pages to complex platforms, using React, TypeScript, and Node.js. I also work with Python, Java, and C."
+    - "My long-term goal is to become a security engineer. I'm focused on understanding how data flows through systems, how protocols enable communication, and where weaknesses appear."
+    - "I'm currently pursuing the HTB CJCA certification, working across penetration testing, reconnaissance, exploitation, privilege escalation, network traffic analysis, and SIEM-based log analysis."
 
 skills:
-  - Web application development (React, TypeScript, Node.js)
-  - Backend development fundamentals
-  - Python, Java, C
-  - Networking fundamentals & protocol understanding
-  - Penetration testing methodologies
-  - Reconnaissance & information gathering
-  - Manual & automated exploitation
-  - Windows & Linux privilege escalation
-  - Network traffic analysis
-  - Security monitoring & log analysis
-  - SIEM-assisted analysis (Elastic)
+  - category: "Languages"
+    items: ["Python", "JavaScript", "TypeScript", "Java", "C", "Haskell"]
+  - category: "Frontend"
+    items: ["React", "React Native", "HTML", "CSS", "Tailwind"]
+  - category: "Backend"
+    items: ["Node.js", "REST APIs", "MongoDB"]
+  - category: "Networking"
+    items: ["Fundamentals", "Protocol analysis", "Traffic analysis"]
+  - category: "Offensive Security"
+    items:
+      [
+        "Penetration testing",
+        "Reconnaissance",
+        "Exploitation",
+        "Privilege escalation (Windows & Linux)",
+      ]
+  - category: "Defensive Security"
+    items: ["SIEM analysis (Elastic)", "Log analysis", "Security monitoring"]
+  - category: "Embedded / Systems"
+    items: ["FreeRTOS", "Kivy"]
+  - category: "Blockchain"
+    items: ["Solana (Devnet)"]
+  - category: "Tools"
+    items: ["Git", "Linux", "SQLite", "Maven", "JUnit 5", "Agile"]
 
 contact:
   email: "yastre6@proton.me"
