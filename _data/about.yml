@@ -1,22 +1,15 @@
 headline: Mykyta Chursin
-subheadline: Full-Stack Software Developer
+subheadline: Full-Stack Software Engineer 
 bio:
   - "Hi, I'm Mykyta — a Computer Science with Cybersecurity student at the University of Southampton."
-  - "I build full-stack web applications, from simple landing pages to complex platforms, using React, TypeScript, and Node.js. I also work with Python, Java, and C."
-  - "My long-term goal is to become a security engineer. I'm focused on understanding how data flows through systems, how protocols enable communication, and where weaknesses appear."
-  - "I'm currently pursuing the HTB CJCA certification, working across penetration testing, reconnaissance, exploitation, privilege escalation, network traffic analysis, and SIEM-based log analysis."
+  - "I build full-stack web applications, from simple landing pages to complex platforms, using React, TypeScript, and Node.js. I also work with Python and C. Love mi some MCUs as well."
 skills:
-  - "Python, JavaScript, TypeScript, Java, C, Haskell"
+  - "JavaScript, TypeScript, C, Python"
   - "React, React Native, HTML, CSS, Tailwind"
   - "Node.js, REST APIs, MongoDB"
-  - "Networking fundamentals & protocol analysis"
-  - "Penetration testing, reconnaissance, exploitation"
-  - "Privilege escalation (Windows & Linux)"
-  - "Network traffic analysis"
-  - "SIEM analysis (Elastic), log analysis, security monitoring"
   - "FreeRTOS, Kivy"
   - "Solana (Devnet)"
-  - "Git, Linux, SQLite, Maven, JUnit 5, Agile"
+  - "Git, Linux, SQLite, Agile"
 contact:
   email: "yastre6@proton.me"
   github: "https://github.com/takymy"
